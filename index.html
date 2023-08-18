@@ -26,6 +26,13 @@
     margin-bottom: 10px;
   }
 
+  .counter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
   .counter-buttons button {
     padding: 10px 20px;
     font-size: 18px;
@@ -46,17 +53,21 @@
   <div class="counter-container">
     <div class="counter-value" id="counter">0</div>
     <div class="counter-buttons">
-      <button onclick="decreaseCounter()">-</button>
-      <button onclick="increaseCounter()">+</button>
-      <button onclick="resetCounter()">Reset</button>
+      <button id="decreaseButton">-</button>
+      <button id="increaseButton">+</button>
+      <button id="resetButton">Reset</button>
     </div>
   </div>
 
   <script>
+    const counterElement = document.getElementById('counter');
+    const decreaseButton = document.getElementById('decreaseButton');
+    const increaseButton = document.getElementById('increaseButton');
+    const resetButton = document.getElementById('resetButton');
+    
     let count = 0;
     
     function updateCounter() {
-      const counterElement = document.getElementById('counter');
       counterElement.textContent = count;
     }
     
@@ -76,6 +87,10 @@
       count = 0;
       updateCounter();
     }
+    
+    increaseButton.addEventListener('click', increaseCounter);
+    decreaseButton.addEventListener('click', decreaseCounter);
+    resetButton.addEventListener('click', resetCounter);
     
     updateCounter();
   </script>
