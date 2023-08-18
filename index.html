@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styled Tally Counter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+  }
+
+  .counter-container {
+    display: inline-block;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .counter-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .counter-buttons button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .counter-buttons button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+  <div class="counter-container">
+    <div class="counter-value" id="counter">0</div>
+    <div class="counter-buttons">
+      <button onclick="decreaseCounter()">-</button>
+      <button onclick="increaseCounter()">+</button>
+      <button onclick="resetCounter()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+    
+    function updateCounter() {
+      const counterElement = document.getElementById('counter');
+      counterElement.textContent = count;
+    }
+    
+    function increaseCounter() {
+      count++;
+      updateCounter();
+    }
+    
+    function decreaseCounter() {
+      if (count > 0) {
+        count--;
+        updateCounter();
+      }
+    }
+    
+    function resetCounter() {
+      count = 0;
+      updateCounter();
+    }
+    
+    updateCounter();
+  </script>
+</body>
+</html>
